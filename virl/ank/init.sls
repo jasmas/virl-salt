@@ -251,8 +251,6 @@ autonetkit_cisco:
 
 {% endif %}
 
-{% if venv == 'qa' or venv == 'dev' %}
-
 autonetkit_cisco_webui:
   pip.installed:
     {% if ank_ver_fixed %}
@@ -278,6 +276,8 @@ autonetkit_cisco_webui:
       - rm -f /etc/init.d/ank-webserver
     - onchanges:
       - pip: autonetkit_cisco_webui
+
+{% if venv == 'qa' or venv == 'dev' %}
 
 textfsm:
   pip.installed:
